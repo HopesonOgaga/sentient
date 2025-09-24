@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { db } from "../db/firebase";
+import { collection, query, orderBy, getDocs } from "firebase/firestore";
 
 export default function Home() {
+  const [submissions, setSubmissions] = useState([]);
+
+  // Fetch latest community submissions
+  const fetchSubmissions = async () => {
+    try {
+      const q = query(collection(db, "submissions"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+      setSubmissions(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    } catch (err) {
+      console.error("Error fetching submissions:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchSubmissions(); // initial fetch
+
+    const interval = setInterval(() => {
+      fetchSubmissions(); // refresh every 10 minutes
+    }, 600000); // 600,000 ms = 10 minutes
+
+    return () => clearInterval(interval); // cleanup
+  }, []);
+
   return (
-    <main>
+    <main className="">
       {/* Navbar */}
       <header className="w-full shadow-sm">
         <Navbar />
       </header>
 
       {/* Hero Section */}
-      <section className="w-full flex-1 flex flex-col items-center justify-center text-center gap-6 px-4 bg-gradient-to-b from-pink-300 via-white to-gray-100 h-[65vh] sm:h-screen">
+      <section className="flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 bg-gradient-to-b from-pink-300 via-white to-gray-100 h-[65vh] sm:h-screen">
         <h1 className="capitalize text-3xl md:text-5xl font-bold leading-tight text-gray-900">
           Think, plan, and track all in one place
         </h1>
@@ -41,8 +66,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Sentient */}
       <section className="w-full bg-gradient-to-b from-white via-gray-50 to-pink-50 py-16 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: Text */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
@@ -57,17 +83,15 @@ export default function Home() {
             <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
               That’s what’s happening today with Artificial Intelligence (AI). A
               few big companies control the smartest AI systems, and everyone
-              else just gets whatever version they choose to share.
-              <span className="font-semibold text-pink-500">
-                @SentientAGI
-              </span>{" "}
+              else just gets whatever version they choose to share.{" "}
+              <span className="font-semibold text-pink-500">@SentientAGI</span>{" "}
               wants to flip this story.
             </p>
             <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
               It’s building Open AGI (Artificial General Intelligence) that
               anyone can use, learn from, and help grow. Think of it as a giant
               playground where all the tools, games, and knowledge are built by
-              the community— not locked away.
+              the community—not locked away.
             </p>
             <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
               At the center of Sentient is the{" "}
@@ -79,15 +103,12 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Right: Video Placeholder */}
-          <div className="w-full h-64 md:h-96 bg-gray-200 rounded-xl flex items-center justify-center shadow-lg">
-            - {/* Right: Local Video */}
-            <div className="w-full h-64 md:h-96 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-              <video className="w-full h-full object-cover" controls>
-                <source src="/videos/roma-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          {/* Right: Video */}
+          <div className="w-full h-64 md:h-96 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+            <video className="w-full h-full object-cover" controls>
+              <source src="/videos/roma-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -99,88 +120,62 @@ export default function Home() {
             Community Interaction
           </h2>
 
-          {/* multiple cards row */}
-          <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
-            <div className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition">
-              <div className="flex items-center gap-3">
-                <img
-                  src=""
-                  alt=""
-                  className="w-12 h-12 rounded-full bg-gray-200"
-                />
-                <p className="text-lg font-semibold capitalize text-gray-800">
-                  happy
-                </p>
-              </div>
-              <p className="text-left text-gray-600 leading-relaxed">
-                Thinking about launching a community or SaaS product? Outseta is
-                your tool. A CRM, payments, subscriptions, email automation,
-                gated content, segmentation, etc... Outseta is loaded with great
-                features and functionality at an extremely fair price.
-              </p>
-            </div>
-
-            <div className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition">
-              <div className="flex items-center gap-3">
-                <img
-                  src=""
-                  alt=""
-                  className="w-12 h-12 rounded-full bg-gray-200"
-                />
-                <p className="text-lg font-semibold capitalize text-gray-800">
-                  happy
-                </p>
-              </div>
-              <p className="text-left text-gray-600 leading-relaxed">
-                Thinking about launching a community or SaaS product? Outseta is
-                your tool. A CRM, payments, subscriptions, email automation,
-                gated content, segmentation, etc... Outseta is loaded with great
-                features and functionality at an extremely fair price.
-              </p>
-            </div>
-
-            <div className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition">
-              <div className="flex items-center gap-3">
-                <img
-                  src=""
-                  alt=""
-                  className="w-12 h-12 rounded-full bg-gray-200"
-                />
-                <p className="text-lg font-semibold capitalize text-gray-800">
-                  happy
-                </p>
-              </div>
-              <p className="text-left text-gray-600 leading-relaxed">
-                Thinking about launching a community or SaaS product? Outseta is
-                your tool. A CRM, payments, subscriptions, email automation,
-                gated content, segmentation, etc... Outseta is loaded with great
-                features and functionality at an extremely fair price.
-              </p>
-            </div>
-            <div className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition">
-              <div className="flex items-center gap-3">
-                <img
-                  src=""
-                  alt=""
-                  className="w-12 h-12 rounded-full bg-gray-200"
-                />
-                <p className="text-lg font-semibold capitalize text-gray-800">
-                  happy
-                </p>
-              </div>
-              <p className="text-left text-gray-600 leading-relaxed">
-                Thinking about launching a community or SaaS product? Outseta is
-                your tool. A CRM, payments, subscriptions, email automation,
-                gated content, segmentation, etc... Outseta is loaded with great
-                features and functionality at an extremely fair price.
-              </p>
-            </div>
+          {/* Card Row */}
+          <section className="flex gap-6 mt-8 flex-col sm:flex-row flex-wrap">
+            {submissions.length > 0 ? (
+              submissions.map((entry) => (
+                <div
+                  key={entry.id}
+                  className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={entry.image || ""}
+                      alt={entry.mood}
+                      className="w-12 h-12 rounded-full bg-gray-200"
+                    />
+                    <p className="text-lg font-semibold capitalize text-gray-800">
+                      {entry.mood}
+                    </p>
+                  </div>
+                  <p className="text-left text-gray-600 leading-relaxed">
+                    {entry.feedback}
+                  </p>
+                </div>
+              ))
+            ) : (
+              // fallback if no submissions yet
+              [1, 2, 3, 4].map((_, i) => (
+                <div
+                  key={i}
+                  className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src=""
+                      alt="user avatar"
+                      className="w-12 h-12 rounded-full bg-gray-200"
+                    />
+                    <p className="text-lg font-semibold capitalize text-gray-800">
+                      happy
+                    </p>
+                  </div>
+                  <p className="text-left text-gray-600 leading-relaxed">
+                    Thinking about launching a community or SaaS product? Outseta
+                    is your tool. A CRM, payments, subscriptions, email
+                    automation, gated content, segmentation, etc... Outseta is
+                    loaded with great features and functionality at an extremely
+                    fair price.
+                  </p>
+                </div>
+              ))
+            )}
           </section>
         </div>
       </section>
-      <section>
-        <Footer></Footer>
-      </section>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }
