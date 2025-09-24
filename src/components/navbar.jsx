@@ -22,21 +22,24 @@ function Navbar() {
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex gap-8 list-none capitalize font-medium text-gray-700">
-          <li className="hover:text-pink-400 cursor-pointer transition-colors">
+          {/* <li className="hover:text-pink-400 cursor-pointer transition-colors">
             education
-          </li>
-          <li className="hover:text-pink-400 cursor-pointer transition-colors">
-            community update
-          </li>
+          </li> */}
+          {/* <a href="https://blog.sentient.xyz/">
+            {" "}
+            <li className="hover:text-pink-400 cursor-pointer transition-colors">
+              community update
+            </li>
+          </a> */}
           <Link to={"/game"}>
             {" "}
             <li className="hover:text-pink-400 cursor-pointer transition-colors">
               games
             </li>
           </Link>
-          <li className="hover:text-pink-400 cursor-pointer transition-colors">
+          {/* <li className="hover:text-pink-400 cursor-pointer transition-colors">
             dev
-          </li>
+          </li> */}
           <Link to={"/chat"}>
             {" "}
             <li className="hover:text-pink-400 cursor-pointer">chat</li>
@@ -88,23 +91,26 @@ function Navbar() {
               className="fixed top-0 right-0 h-full w-64 bg-white/20 backdrop-blur-lg shadow-xl border-l border-white/30 z-50"
             >
               <div className="flex flex-col h-full p-6">
-                <p className="font-extrabold text-xl text-pink-400 mb-8">
-                  Menu
-                </p>
+                <Link to={"/"}>
+                  {" "}
+                  <p className="font-extrabold text-xl text-pink-400 mb-8">
+                    Menu
+                  </p>
+                </Link>
                 <ul className="flex flex-col gap-6 capitalize font-medium text-gray-700">
-                  <li className="hover:text-pink-400 cursor-pointer">
+                  {/* <li className="hover:text-pink-400 cursor-pointer">
                     education
-                  </li>
-                  <li className="hover:text-pink-400 cursor-pointer">
+                  </li> */}
+                  {/* <li className="hover:text-pink-400 cursor-pointer">
                     community update
-                  </li>
+                  </li> */}
                   <Link to={"/game"}>
                     {" "}
                     <li className="hover:text-pink-400 cursor-pointer">
                       games
                     </li>
                   </Link>
-                  <li className="hover:text-pink-400 cursor-pointer">dev</li>
+                  {/* <li className="hover:text-pink-400 cursor-pointer">dev</li> */}
                   <Link to={"/chat"}>
                     {" "}
                     <li className="hover:text-pink-400 cursor-pointer">chat</li>
