@@ -121,7 +121,7 @@ export default function Home() {
           </h2>
 
           {/* Card Row */}
-          <section className="flex gap-6 mt-8 flex-col sm:flex-row flex-wrap">
+          <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
             {submissions.length > 0 ? (
               submissions.map((entry) => (
                 <div

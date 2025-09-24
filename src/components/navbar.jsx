@@ -28,9 +28,12 @@ function Navbar() {
           <li className="hover:text-pink-400 cursor-pointer transition-colors">
             community update
           </li>
-          <li className="hover:text-pink-400 cursor-pointer transition-colors">
-            games
-          </li>
+          <Link to={"/game"}>
+            {" "}
+            <li className="hover:text-pink-400 cursor-pointer transition-colors">
+              games
+            </li>
+          </Link>
           <li className="hover:text-pink-400 cursor-pointer transition-colors">
             dev
           </li>
@@ -95,7 +98,12 @@ function Navbar() {
                   <li className="hover:text-pink-400 cursor-pointer">
                     community update
                   </li>
-                  <li className="hover:text-pink-400 cursor-pointer">games</li>
+                  <Link to={"/game"}>
+                    {" "}
+                    <li className="hover:text-pink-400 cursor-pointer">
+                      games
+                    </li>
+                  </Link>
                   <li className="hover:text-pink-400 cursor-pointer">dev</li>
                   <Link to={"/chat"}>
                     {" "}
