@@ -34,14 +34,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="">
+    <main className="h-screen">
       {/* Navbar */}
       <header className="w-full shadow-sm">
         <Navbar />
       </header>
 
       {/* Hero Section */}
-      <section className="relative flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[65vh] sm:h-screen overflow-hidden">
+      <section className="relative mt-16 sm:mt-0 flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[65vh] sm:h-screen overflow-hidden">
         {/* Background Video */}
         <video
           autoPlay
@@ -68,7 +68,7 @@ export default function Home() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <div className="flex gap-4 justify-center">
             <a
               href="https://x.com/i/communities/1966141414703509919"
               target="_blank"
