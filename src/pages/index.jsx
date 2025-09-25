@@ -10,9 +10,14 @@ export default function Home() {
   // Fetch latest community submissions
   const fetchSubmissions = async () => {
     try {
-      const q = query(collection(db, "submissions"), orderBy("createdAt", "desc"));
+      const q = query(
+        collection(db, "submissions"),
+        orderBy("createdAt", "desc")
+      );
       const snapshot = await getDocs(q);
-      setSubmissions(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      setSubmissions(
+        snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
     } catch (err) {
       console.error("Error fetching submissions:", err);
     }
@@ -36,33 +41,55 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 bg-gradient-to-b from-pink-300 via-white to-gray-100 h-[65vh] sm:h-screen">
-        <h1 className="capitalize text-3xl md:text-5xl font-bold leading-tight text-gray-900">
-          Think, plan, and track all in one place
-        </h1>
-        <p className="text-base md:text-lg text-gray-600 max-w-xl leading-relaxed">
-          Manage tasks, play games, and boost productivity with a
-          community-driven hub.
-        </p>
+      <section className="relative flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[65vh] sm:h-screen overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover"
+        >
+          <source src="/videos/pixel2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-4">
-          <a
-            href="https://x.com/i/communities/1966141414703509919"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-lg bg-pink-500 text-white font-medium hover:bg-pink-600 transition"
-          >
-            Join X Community
-          </a>
-          <a
-            href="https://discord.gg/sentientfoundation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-lg bg-gray-800 text-white font-medium hover:bg-gray-900 transition"
-          >
-            Join Discord
-          </a>
+        {/* Dark Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
+
+        {/* Foreground Content */}
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <h1 className="capitalize text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
+            Think, plan, and track all in one place
+          </h1>
+          <p className="text-base md:text-lg text-gray-200 max-w-xl leading-relaxed drop-shadow">
+            Manage tasks, play games, and boost productivity with a
+            community-driven hub.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <a
+              href="https://x.com/i/communities/1966141414703509919"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-lg bg-pink-500 text-white font-medium hover:bg-pink-600 transition"
+            >
+              Join X Community
+            </a>
+            <a
+              href="https://discord.gg/sentientfoundation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-lg bg-gray-800 text-white font-medium hover:bg-gray-900 transition"
+            >
+              Join Discord
+            </a>
+          </div>
+          <div className="text-sm text-gray-300 max-w-md leading-relaxed drop-shadow mt-4">
+            <p >please bear with me as i continue to develop the app , you can drop review and features and will update app every 72 hours</p>
+            <p>just an intern dev having fun build for community </p>
+          </div>
         </div>
       </section>
 
@@ -122,54 +149,52 @@ export default function Home() {
 
           {/* Card Row */}
           <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
-            {submissions.length > 0 ? (
-              submissions.map((entry) => (
-                <div
-                  key={entry.id}
-                  className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={entry.image || ""}
-                      alt={entry.mood}
-                      className="w-12 h-12 rounded-full bg-gray-200"
-                    />
-                    <p className="text-lg font-semibold capitalize text-gray-800">
-                      {entry.mood}
+            {submissions.length > 0
+              ? submissions.map((entry) => (
+                  <div
+                    key={entry.id}
+                    className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition"
+                  >
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={entry.image || ""}
+                        alt={entry.mood}
+                        className="w-12 h-12 rounded-full bg-gray-200"
+                      />
+                      <p className="text-lg font-semibold capitalize text-gray-800">
+                        {entry.mood}
+                      </p>
+                    </div>
+                    <p className="text-left text-gray-600 leading-relaxed">
+                      {entry.feedback}
                     </p>
                   </div>
-                  <p className="text-left text-gray-600 leading-relaxed">
-                    {entry.feedback}
-                  </p>
-                </div>
-              ))
-            ) : (
-              // fallback if no submissions yet
-              [1, 2, 3, 4].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src=""
-                      alt="user avatar"
-                      className="w-12 h-12 rounded-full bg-gray-200"
-                    />
-                    <p className="text-lg font-semibold capitalize text-gray-800">
-                      happy
+                ))
+              : // fallback if no submissions yet
+                [1, 2, 3, 4].map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-full w-full sm:w-1/3 rounded-lg shadow-md border border-gray-200 flex flex-col gap-4 p-6 bg-white hover:shadow-lg transition"
+                  >
+                    <div className="flex items-center gap-3">
+                      <img
+                        src=""
+                        alt="user avatar"
+                        className="w-12 h-12 rounded-full bg-gray-200"
+                      />
+                      <p className="text-lg font-semibold capitalize text-gray-800">
+                        happy
+                      </p>
+                    </div>
+                    <p className="text-left text-gray-600 leading-relaxed">
+                      Thinking about launching a community or SaaS product?
+                      Outseta is your tool. A CRM, payments, subscriptions,
+                      email automation, gated content, segmentation, etc...
+                      Outseta is loaded with great features and functionality at
+                      an extremely fair price.
                     </p>
                   </div>
-                  <p className="text-left text-gray-600 leading-relaxed">
-                    Thinking about launching a community or SaaS product? Outseta
-                    is your tool. A CRM, payments, subscriptions, email
-                    automation, gated content, segmentation, etc... Outseta is
-                    loaded with great features and functionality at an extremely
-                    fair price.
-                  </p>
-                </div>
-              ))
-            )}
+                ))}
           </section>
         </div>
       </section>

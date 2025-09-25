@@ -15,13 +15,13 @@ function Navbar() {
       >
         {/* Logo */}
         <Link to={"/"}>
-          <p className="font-extrabold text-2xl uppercase text-pink-400 tracking-wide drop-shadow-md">
+          <p className="font-extrabold text-2xl uppercase text-white tracking-wide drop-shadow-md">
             sentient community
           </p>
         </Link>
 
         {/* Desktop Nav Links */}
-        <ul className="hidden md:flex gap-8 list-none capitalize font-medium text-gray-700">
+        <ul className="hidden md:flex gap-8 list-none capitalize font-medium text-xl  text-white">
           {/* <li className="hover:text-pink-400 cursor-pointer transition-colors">
             education
           </li> */}
@@ -44,10 +44,14 @@ function Navbar() {
             {" "}
             <li className="hover:text-pink-400 cursor-pointer">chat</li>
           </Link>
+          <Link to={"/leaderboard"}>
+            {" "}
+            <li className="hover:text-pink-400 cursor-pointer">leaderboard</li>
+          </Link>
         </ul>
 
         {/* Sign-in Button (desktop) */}
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <button
             className="w-32 h-12 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 
             hover:from-pink-500 hover:to-pink-600 active:scale-95 transition 
@@ -55,7 +59,7 @@ function Navbar() {
           >
             Sign In
           </button>
-        </div>
+        </div> */}
 
         {/* Hamburger for Mobile */}
         <div className="md:hidden">
@@ -115,8 +119,12 @@ function Navbar() {
                     {" "}
                     <li className="hover:text-pink-400 cursor-pointer">chat</li>
                   </Link>
+                  <Link to={"/leaderboard"}>
+                    {" "}
+                    <li className="hover:text-pink-400 cursor-pointer">leaderboard</li>
+                  </Link>
                 </ul>
-                <div className="mt-auto">
+                {/* <div className="mt-auto">
                   <button
                     className="w-full h-12 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 
                     hover:from-pink-500 hover:to-pink-600 active:scale-95 transition 
@@ -124,7 +132,7 @@ function Navbar() {
                   >
                     Sign In
                   </button>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           </>

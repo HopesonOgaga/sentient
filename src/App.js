@@ -3,6 +3,7 @@ import Navbar from "./components/navbar";
 import Chat from "./pages/chat";
 import Home from "./pages";
 import Trivia from "./pages/games";
+import LeaderboardPage from "./pages/leaderboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="nav" element={<Navbar></Navbar>}></Route>
         <Route path="chat" element={<Chat></Chat>}></Route>
         <Route path="/game" element={<Trivia></Trivia>}></Route>
+        <Route path="/leaderboard" element={<LeaderboardPage></LeaderboardPage>}></Route>
       </Routes>
     </BrowserRouter>
   );
