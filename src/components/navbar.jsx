@@ -92,7 +92,7 @@ function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
-              className="fixed top-0 right-0 h-full w-64 bg-white/20 backdrop-blur-lg shadow-xl border-l border-white/30 z-50"
+              className="fixed top-0 right-0 h-full w-64 bg-white backdrop-blur-lg shadow-xl border-l border-white/30 z-50"
             >
               <div className="flex flex-col h-full p-6">
                 <Link to={"/"}>
