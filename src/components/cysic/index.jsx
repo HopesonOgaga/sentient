@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CysicVideoEmbed from "../videos/twitter";
 import CysicTweet from "../videos/twitter";
+import Navbar from "../navbar";
+import Footer from "../footer";
 
 export default function Cysic() {
   const targetDate = new Date("2025-10-20T00:00:00");
@@ -25,7 +27,9 @@ export default function Cysic() {
   }, []);
 
   return (
-    <section className="w-full min-h-screen bg-gradient-to-b from-gray-900 via-gray-950 to-black text-gray-100 py-20 px-6">
+    <>
+    <Navbar></Navbar>
+    <section className=" w-full min-h-screen bg-gradient-to-b from-gray-900 via-gray-950 to-black text-gray-100 py-28 px-6">
       <div className="max-w-6xl mx-auto space-y-20">
         {/* Header Section */}
         <div className="text-center space-y-4">
@@ -196,5 +200,7 @@ export default function Cysic() {
         </div>
       </div>
     </section>
+    <Footer></Footer>
+    </>
   );
 }

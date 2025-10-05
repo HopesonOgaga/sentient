@@ -7,6 +7,7 @@ export const Projects  = [
           desc: "Hardware-accelerated ZK proof generation built for speed and scalability.",
           twitter: "https://x.com/cysic_xyz",
           discord: "https://discord.gg/cysic",
+          link: "/cysic",
         },
         {
           name: "Allora",
