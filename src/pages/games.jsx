@@ -190,7 +190,7 @@ export default function CysicTrivia() {
     const tweetText = encodeURIComponent(
       `💻 I scored ${score}/${questions.length} in the @cysic_xyz Trivia!  
 ⚙️ Test your knowledge about Zero-Knowledge hardware and the upcoming mainnet launch 🔥  
-Think you can beat me? Try it out here: https://senticomm.xyz/games #CysicTrivia`
+Think you can beat me? Try it out here: https://sentient-zeta.vercel.app/game #CysicTrivia`
     );
     const twitterUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
     window.open(twitterUrl, "_blank");
