@@ -37,14 +37,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-screen">
+    <main className="h-screen ">
       {/* Navbar */}
       <header className="w-full shadow-sm">
         <Navbar />
       </header>
 
       {/* Hero Section */}
-      <section className="relative mt-16  sm:mt-0 flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[65vh] sm:h-screen overflow-hidden py-24">
+      <section className="relative mt-16  sm:mt-0 flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[100vh]  overflow-hidden ">
         {/* Background Video */}
         <video
           autoPlay

@@ -8,7 +8,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="fixed top-0 left-0 w-full z-50">
+    <section className="fixed top-0 left-0 w-full z-50 ">
       <nav
         className="w-full h-20 flex justify-between items-center px-8 
         bg-[#0A0F1C] shadow-lg border-b border-[#00CFFF]/40"
