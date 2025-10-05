@@ -16,7 +16,7 @@ function Navbar() {
         {/* Logo */}
         <Link to={"/"}>
           <p className="font-extrabold text-2xl uppercase text-white tracking-wide drop-shadow-md">
-            sentient community
+            NekoCoiner community
           </p>
         </Link>
 

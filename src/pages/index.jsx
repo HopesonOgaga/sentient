@@ -3,6 +3,9 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { db } from "../db/firebase";
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
+import { Projects } from "../components/projects";
+import CountdownTimer from "../components/timer/cysictime";
+import { Link } from "react-router";
 
 export default function Home() {
   const [submissions, setSubmissions] = useState([]);
@@ -87,55 +90,64 @@ export default function Home() {
             </a>
           </div>
           <div className="text-sm text-gray-300 max-w-md leading-relaxed drop-shadow mt-4">
-            <p >please bear with me as i continue to develop the app , you can drop review and features and will update app every 72 hours</p>
+            <p>
+              please bear with me as i continue to develop the app , you can
+              drop review and features and will update app every 72 hours
+            </p>
             <p>just an intern dev having fun build for community </p>
+            <div>
+              <CountdownTimer></CountdownTimer>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* About Sentient */}
-      <section className="w-full bg-gradient-to-b from-white via-gray-50 to-pink-50 py-16 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left: Text */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              What is Sentient?
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-              The Open AI World Everyone Can Join. Imagine if only a few kids in
-              school had the world’s biggest, smartest calculator. They decide
-              who can use it, what problems it can solve, and when others get
-              access. That wouldn’t feel fair, right?
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
-              That’s what’s happening today with Artificial Intelligence (AI). A
-              few big companies control the smartest AI systems, and everyone
-              else just gets whatever version they choose to share.{" "}
-              <span className="font-semibold text-pink-500">@SentientAGI</span>{" "}
-              wants to flip this story.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
-              It’s building Open AGI (Artificial General Intelligence) that
-              anyone can use, learn from, and help grow. Think of it as a giant
-              playground where all the tools, games, and knowledge are built by
-              the community—not locked away.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-4">
-              At the center of Sentient is the{" "}
-              <span className="font-semibold">GRID</span>. It works like a super
-              team: one helper might be great at math, another at history,
-              another at finding data. When you ask a question, GRID splits it
-              into smaller parts, sends each to the right helper, then combines
-              everything into one clear answer.
-            </p>
-          </div>
+      {/* Projects Grid Section */}
+      <section className="w-full bg-gray-50 py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">
+            Explore Top Web3 Projects
+          </h2>
 
-          {/* Right: Video */}
-          <div className="w-full h-64 md:h-96 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-            <video className="w-full h-full object-cover" controls>
-              <source src="/videos/roma-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Projects.map((p, index) => (
+              <Link
+                key={index}
+                to={p.link || "#"}
+                className="bg-white rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all p-6 flex flex-col items-center text-center border border-gray-200"
+              >
+                <img
+                  src={p.logo}
+                  alt={p.name}
+                  className="w-20 h-20 object-contain mb-4"
+                />
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {p.name}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">{p.desc}</p>
+                <div className="flex gap-3">
+                  <a
+                    href={p.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-sm bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+                    onClick={(e) => e.stopPropagation()} // prevents triggering Link
+                  >
+                    X
+                  </a>
+                  <a
+                    href={p.discord}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-sm bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition"
+                    onClick={(e) => e.stopPropagation()} // prevents triggering Link
+                  >
+                    Discord
+                  </a>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

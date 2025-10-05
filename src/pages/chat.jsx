@@ -53,7 +53,7 @@ function SentientFeedback() {
 
       <main className="min-h-screen pt-20 bg-gradient-to-b from-pink-300 via-white to-gray-100 flex flex-col items-center p-6">
         <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-2 text-center">
-          Sentient Community Feedback
+          NekoCoiner Community Feedback
         </h1>
         <p className="text-gray-600 mb-8 text-center">
           Share your mood and see how others feel in the community.

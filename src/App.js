@@ -4,6 +4,9 @@ import Chat from "./pages/chat";
 import Home from "./pages";
 import Trivia from "./pages/games";
 import LeaderboardPage from "./pages/leaderboard";
+import TriviaCysic from "./components/cysic/gamecy";
+import Sentient from "./components/sentient";
+import Cysic from "./components/cysic";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Route path="chat" element={<Chat></Chat>}></Route>
         <Route path="/game" element={<Trivia></Trivia>}></Route>
         <Route path="/leaderboard" element={<LeaderboardPage></LeaderboardPage>}></Route>
+        <Route path="/cysicgame" element={<TriviaCysic></TriviaCysic>}></Route>
+        <Route path="/sentient" element={<Sentient></Sentient>}></Route>
+        <Route path="/cysic" element={<Cysic></Cysic>}></Route>
       </Routes>
     </BrowserRouter>
   );
