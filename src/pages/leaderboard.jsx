@@ -16,7 +16,7 @@ const LeaderboardPage = () => {
 
   useEffect(() => {
     const q = query(
-      collection(db, "leaderboard"),
+      collection(db, "cysicLeaderboard"),
       orderBy("score", "desc"),
       limit(20)
     );

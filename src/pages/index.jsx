@@ -73,21 +73,21 @@ export default function Home() {
           {/* CTA Buttons */}
           <div className="flex gap-4 justify-center">
             <a
-              href="https://x.com/i/communities/1966141414703509919"
+              href="https://x.com/NekoCoiner"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-lg bg-pink-500 text-white font-medium hover:bg-pink-600 transition"
             >
               Join X Community
             </a>
-            <a
-              href="https://discord.gg/sentientfoundation"
+            {/* <a
+              href="https://discord.gg/hopeson1498"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-lg bg-gray-800 text-white font-medium hover:bg-gray-900 transition"
             >
               Join Discord
-            </a>
+            </a> */}
           </div>
           <div className="text-sm text-gray-300 max-w-md leading-relaxed drop-shadow mt-4">
             <p>

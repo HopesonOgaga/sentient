@@ -1,4 +1,3 @@
-// src/components/Trivia.jsx
 import React, { useState, useEffect } from "react";
 import { db } from "../db/firebase";
 import {
@@ -17,24 +16,89 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
 const questions = [
-  { question: "What is Sentient aiming to build?", options: ["Closed AI", "Open AGI", "Smartphone App", "Social Media"], answer: "Open AGI" },
-  { question: "What is the core of Sentient that answers questions?", options: ["GRID", "CPU", "Network", "Database"], answer: "GRID" },
-  { question: "Who can contribute to Sentient's knowledge?", options: ["Only Admins", "Everyone", "Only AI", "Only Investors"], answer: "Everyone" },
-  { question: "Which company currently controls the smartest AI?", options: ["OpenAI", "Sentient", "Google", "Microsoft"], answer: "OpenAI" },
-  { question: "What does GRID do?", options: ["Processes everything alone", "Splits tasks to helpers", "Stores user data", "None"], answer: "Splits tasks to helpers" },
-  { question: "What is the goal of Sentient AGI?", options: ["Restrict AI", "Open learning for all", "Profit only", "Social media app"], answer: "Open learning for all" },
-  { question: "Who decides what GRID answers?", options: ["Only Admins", "Community", "AI", "Random"], answer: "Community" },
-  { question: "What type of intelligence is Sentient building?", options: ["Narrow AI", "AGI", "Machine Learning", "Robotics"], answer: "AGI" },
-  { question: "How many main components does GRID have?", options: ["1", "Multiple helpers", "10", "None"], answer: "Multiple helpers" },
-  { question: "Can everyone use Sentient's tools?", options: ["Yes", "No", "Admins only", "Investors only"], answer: "Yes" },
-  { question: "What powers the Sentient playground?", options: ["Community", "AI alone", "Corporates", "None"], answer: "Community" },
-  { question: "What kind of content can be built by the community?", options: ["Games", "Tools", "Knowledge", "All"], answer: "All" },
-  { question: "Does Sentient lock its AI?", options: ["Yes", "No"], answer: "No" },
-  { question: "Can users track their progress?", options: ["Yes", "No"], answer: "Yes" },
-  { question: "What is rewarded with XP?", options: ["Trivia", "Participation", "Both", "None"], answer: "Both" },
+  {
+    question: "What is Cysic building?",
+    options: [
+      "Gaming App",
+      "ZK Hardware Infrastructure",
+      "DEX",
+      "Blockchain Explorer",
+    ],
+    answer: "ZK Hardware Infrastructure",
+  },
+  {
+    question: "When is Cysic mainnet scheduled to launch?",
+    options: ["October 20th", "November 1st", "September 28th", "December 5th"],
+    answer: "October 20th",
+  },
+  {
+    question: "Cysic accelerates which kind of proofs?",
+    options: [
+      "Zero-Knowledge Proofs",
+      "Consensus Proofs",
+      "Transaction Proofs",
+      "Proof of Work",
+    ],
+    answer: "Zero-Knowledge Proofs",
+  },
+  {
+    question: "What makes Cysic’s hardware special?",
+    options: [
+      "AI focus",
+      "GPU-based only",
+      "Hardware acceleration for ZKPs",
+      "Purely software",
+    ],
+    answer: "Hardware acceleration for ZKPs",
+  },
+  {
+    question: "Which ecosystem is Cysic part of?",
+    options: ["Web2", "Web3 / Blockchain", "IoT", "Gaming"],
+    answer: "Web3 / Blockchain",
+  },
+  {
+    question: "Cysic optimizes performance using what?",
+    options: [
+      "ZK coprocessors",
+      "AI models",
+      "Custom blockchain nodes",
+      "Quantum chips",
+    ],
+    answer: "ZK coprocessors",
+  },
+  {
+    question: "Cysic’s focus is improving:",
+    options: [
+      "Proof generation speed",
+      "Web design",
+      "Smart contract UX",
+      "Tokenomics",
+    ],
+    answer: "Proof generation speed",
+  },
+  {
+    question: "Cysic’s chip can outperform:",
+    options: ["Data centers", "Single GPU", "Only CPUs", "No hardware"],
+    answer: "Data centers",
+  },
+  {
+    question: "What does ZKP stand for?",
+    options: [
+      "Zero-Knowledge Proof",
+      "Zero-Knowledge Process",
+      "Zeta Key Program",
+      "Zero Knowledge Portal",
+    ],
+    answer: "Zero-Knowledge Proof",
+  },
+  {
+    question: "Who can access Cysic testnet?",
+    options: ["Developers & Testers", "Only Investors", "Only Admins", "None"],
+    answer: "Developers & Testers",
+  },
 ];
 
-export default function Trivia() {
+export default function CysicTrivia() {
   const [username, setUsername] = useState("");
   const [gameStarted, setGameStarted] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -45,7 +109,7 @@ export default function Trivia() {
   const [disable, setDisable] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
 
-  // Countdown timer
+  // Countdown
   useEffect(() => {
     if (!gameStarted || showScore || disable) return;
     if (timer === 0) {
@@ -56,10 +120,10 @@ export default function Trivia() {
     return () => clearInterval(interval);
   }, [timer, gameStarted, showScore, disable]);
 
-  // Live leaderboard sync
+  // Leaderboard sync
   useEffect(() => {
     const q = query(
-      collection(db, "leaderboard"),
+      collection(db, "cysicLeaderboard"),
       orderBy("score", "desc"),
       limit(10)
     );
@@ -81,9 +145,8 @@ export default function Trivia() {
       setScore(newScore);
     }
 
-    // Save question attempt
     try {
-      await addDoc(collection(db, "triviaResults"), {
+      await addDoc(collection(db, "cysicTriviaResults"), {
         username,
         question: questions[current]?.question,
         selected,
@@ -102,83 +165,100 @@ export default function Trivia() {
       setCurrent((c) => c + 1);
     } else {
       setShowScore(true);
-
-      // Save/update final score
       try {
-        await setDoc(doc(db, "leaderboard", username), {
-          username: username || "Anonymous",
-          score: newScore,
-          timestamp: serverTimestamp(),
-        });
+        const cleanUsername = username?.trim() || "Anonymous";
+
+        // Add or update user score (if higher)
+        try {
+          const leaderboardRef = collection(db, "cysicLeaderboard");
+          await addDoc(leaderboardRef, {
+            username: cleanUsername,
+            score: newScore,
+            timestamp: serverTimestamp(),
+          });
+          console.log("Score saved:", cleanUsername, newScore);
+        } catch (err) {
+          console.error("Error saving score:", err);
+        }
       } catch (err) {
         console.error("Error saving score:", err);
       }
     }
   };
 
+  const handleShareOnX = () => {
+    const tweetText = encodeURIComponent(
+      `💻 I scored ${score}/${questions.length} in the @cysic_xyz Trivia!  
+⚙️ Test your knowledge about Zero-Knowledge hardware and the upcoming mainnet launch 🔥  
+Think you can beat me? Try it out here: https://senticomm.xyz/games #CysicTrivia`
+    );
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
+    window.open(twitterUrl, "_blank");
+  };
+
   return (
     <>
       <Navbar />
-      <section className="flex flex-col items-center min-h-screen justify-center bg-gradient-to-br from-pink-300">
-        <div className="max-w-3xl w-full bg-white p-6 rounded-2xl shadow-md">
-          {/* Username entry */}
+      <section className="flex flex-col items-center min-h-screen justify-center bg-gradient-to-br from-gray-950 via-blue-950 to-black text-white px-4">
+        <div className="max-w-3xl w-full bg-gray-900 p-6 rounded-2xl shadow-lg border border-blue-800/40">
+          {/* Username */}
           {!gameStarted && !showScore && (
             <div className="text-center">
-              <h2 className="text-xl font-semibold mb-4">
-                Enter your name to start
+              <h2 className="text-xl font-semibold mb-4 text-cyan-400">
+                Enter your name to start Cysic Trivia ⚙️
               </h2>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Your name"
-                className="border rounded-lg px-4 py-2 mb-4 w-full"
+                className="border border-gray-700 rounded-lg px-4 py-2 mb-4 w-full bg-gray-800 text-white"
               />
               <button
                 disabled={!username}
                 onClick={() => setGameStarted(true)}
-                className="px-6 py-2 rounded-lg bg-pink-500 text-white font-semibold hover:bg-pink-600 transition"
+                className="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
               >
                 Start Game
               </button>
             </div>
           )}
 
-          {/* Quiz screen */}
+          {/* Quiz */}
           {gameStarted && !showScore && (
             <>
-              <p className="text-gray-600 mb-2 text-sm">
+              <p className="text-gray-400 mb-2 text-sm">
                 {current + 1} / {questions.length}
               </p>
 
               <p
                 className={`font-semibold mb-4 ${
-                  timer <= 5 ? "text-red-500" : "text-gray-800"
+                  timer <= 5 ? "text-red-500" : "text-cyan-400"
                 }`}
               >
                 Time: {timer}s
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              <h2 className="text-xl font-semibold text-white mb-4">
                 {questions[current]?.question}
               </h2>
 
               <div className="grid gap-3">
                 {questions[current]?.options.map((option, i) => {
                   let bgClass =
-                    "bg-white border-gray-300 hover:bg-pink-400 hover:text-white text-gray-800";
+                    "bg-gray-800 border border-gray-700 hover:bg-blue-600 hover:text-white";
                   if (selected) {
                     if (option === selected) {
                       bgClass =
                         option === questions[current].answer
-                          ? "bg-green-500 text-white border-green-600"
-                          : "bg-red-500 text-white border-red-600";
+                          ? "bg-green-600 text-white"
+                          : "bg-red-600 text-white";
                     }
                     if (
                       option === questions[current].answer &&
                       selected !== option
                     ) {
-                      bgClass = "bg-green-500 text-white border-green-600";
+                      bgClass = "bg-green-600 text-white";
                     }
                   }
                   return (
@@ -186,7 +266,7 @@ export default function Trivia() {
                       key={i}
                       onClick={() => handleOptionClick(option)}
                       disabled={disable}
-                      className={`w-full py-2 px-4 rounded-lg border transition ${bgClass}`}
+                      className={`w-full py-2 px-4 rounded-lg transition ${bgClass}`}
                     >
                       {option}
                     </button>
@@ -197,14 +277,14 @@ export default function Trivia() {
               <button
                 onClick={handleNext}
                 disabled={!selected && timer > 0}
-                className="mt-4 w-full py-2 rounded-lg bg-gray-900 text-white font-semibold hover:opacity-80 transition"
+                className="mt-4 w-full py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
               >
                 Next
               </button>
             </>
           )}
 
-          {/* Final score & leaderboard */}
+          {/* Score & Leaderboard */}
           {showScore && (
             <AnimatePresence>
               <motion.div
@@ -213,14 +293,23 @@ export default function Trivia() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 className="text-center"
               >
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  {username}, you scored {score} / {questions.length}
+                <h2 className="text-2xl font-bold text-cyan-400 mb-4">
+                  {username}, you scored {score} / {questions.length} ⚡
                 </h2>
 
-                <h3 className="text-xl font-semibold mb-3">🏆 Leaderboard</h3>
-                <table className="w-full border-collapse mb-4">
+                <button
+                  onClick={handleShareOnX}
+                  className="mb-6 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-5 py-3 rounded-xl shadow-lg hover:opacity-90 transition transform hover:scale-105"
+                >
+                  🐦 Share on X
+                </button>
+
+                <h3 className="text-xl font-semibold mb-3 text-blue-400">
+                  🏆 Leaderboard
+                </h3>
+                <table className="w-full border-collapse mb-4 text-gray-300">
                   <thead>
-                    <tr className="bg-gray-100 text-left">
+                    <tr className="bg-gray-800 text-left">
                       <th className="p-2">Rank</th>
                       <th className="p-2">Name</th>
                       <th className="p-2">Score</th>
@@ -230,9 +319,9 @@ export default function Trivia() {
                     {leaderboard.map((player, index) => (
                       <tr
                         key={index}
-                        className={`border-b ${
+                        className={`border-b border-gray-800 ${
                           player.username === username
-                            ? "bg-yellow-100 font-bold"
+                            ? "bg-blue-900/50 font-bold"
                             : ""
                         }`}
                       >
@@ -252,7 +341,7 @@ export default function Trivia() {
                     setTimer(20);
                     setGameStarted(false);
                   }}
-                  className="mt-6 px-6 py-2 rounded-lg bg-pink-500 text-white font-semibold hover:bg-pink-600 transition"
+                  className="mt-6 px-6 py-2 rounded-lg bg-gray-800 text-blue-400 font-semibold hover:bg-gray-700 transition"
                 >
                   Restart
                 </button>
