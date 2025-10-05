@@ -44,7 +44,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative mt-16 sm:mt-0 flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[65vh] sm:h-screen overflow-hidden">
+      <section className="relative mt-16  sm:mt-0 flex-1 w-full flex flex-col items-center justify-center text-center gap-6 px-4 h-[65vh] sm:h-screen overflow-hidden py-24">
         {/* Background Video */}
         <video
           autoPlay
@@ -160,7 +160,7 @@ export default function Home() {
           </h2>
 
           {/* Card Row */}
-          <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
+          {/* <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
             {submissions.length > 0
               ? submissions.map((entry) => (
                   <div
@@ -207,7 +207,9 @@ export default function Home() {
                     </p>
                   </div>
                 ))}
-          </section>
+          </section> */}
+
+          <div><p>coming soon</p></div>
         </div>
       </section>
 
