@@ -6,17 +6,25 @@ export default function Randomizer() {
   const [count, setCount] = useState(null);
   const resultRef = useRef(null);
 
+  const twitterRegex = /^@?[A-Za-z0-9_]{1,15}$/; // Valid X handle format
+
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('gmsorData'));
-    if (storedData && Date.now() - storedData.timestamp < 10 * 60 * 1000) {
-      setCount(storedData.count);
+    const allData = JSON.parse(localStorage.getItem('gmsorData')) || {};
+    if (allData[username] && Date.now() - allData[username].timestamp < 10 * 60 * 1000) {
+      setCount(allData[username].count);
     }
-  }, []);
+  }, [username]);
 
   const handleCheck = () => {
     if (!username.trim()) return alert('Enter your X (Twitter) username first!');
 
-    const storedData = JSON.parse(localStorage.getItem('gmsorData'));
+    if (!twitterRegex.test(username)) {
+      alert('Invalid X username! Use only letters, numbers, and underscores (max 15 characters).');
+      return;
+    }
+
+    const allData = JSON.parse(localStorage.getItem('gmsorData')) || {};
+    const storedData = allData[username];
 
     if (storedData && Date.now() - storedData.timestamp < 10 * 60 * 1000) {
       setCount(storedData.count);
@@ -30,19 +38,29 @@ export default function Randomizer() {
       newCount = Math.floor(Math.random() * 801) + 200;
     }
 
-    const data = { username, count: newCount, timestamp: Date.now() };
-    localStorage.setItem('gmsorData', JSON.stringify(data));
+    const updatedData = {
+      ...allData,
+      [username]: { count: newCount, timestamp: Date.now() },
+    };
+    localStorage.setItem('gmsorData', JSON.stringify(updatedData));
     setCount(newCount);
   };
 
   const handleDownload = async () => {
     if (!resultRef.current) return;
-
     const canvas = await html2canvas(resultRef.current, { backgroundColor: '#000' });
     const link = document.createElement('a');
     link.download = `${username}_gmsor_count.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
+  };
+
+  const handleUsernameChange = (e) => {
+    let value = e.target.value.trim();
+    if (value && !value.startsWith('@')) value = '@' + value;
+    // Only allow valid chars while typing
+    value = value.replace(/[^@A-Za-z0-9_]/g, '');
+    setUsername(value);
   };
 
   return (
@@ -55,25 +73,32 @@ export default function Randomizer() {
       <input
         type="text"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={handleUsernameChange}
         placeholder="@yourhandle"
         className="bg-gray-800 text-white px-4 py-2 rounded-lg mb-4 w-64 text-center border border-gray-700 focus:border-blue-400 outline-none"
       />
 
       <button
         onClick={handleCheck}
-        className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg font-semibold transition-all"
+        disabled={!username.trim()}
+        className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+          username.trim()
+            ? 'bg-blue-500 hover:bg-blue-600 cursor-pointer'
+            : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+        }`}
       >
         Check my gmsor count 🚀
       </button>
 
       {count !== null && (
-        <div ref={resultRef} className="mt-8 text-center bg-gray-800 p-6 rounded-xl shadow-lg w-80">
-          <h2 className="text-2xl font-semibold mb-2">@{username}</h2>
+        <div
+          ref={resultRef}
+          className="mt-8 text-center bg-gray-800 p-6 rounded-xl shadow-lg w-80 border border-gray-700"
+        >
+          <h2 className="text-2xl font-semibold mb-2">{username}</h2>
           <p className="text-lg text-gray-300">
             You’ve said <span className="text-blue-400 font-bold">{count}</span> gmsor(s) on X 🫡
           </p>
-          <p className="text-sm text-gray-500 mt-2 hidden">(Updated every 10 minutes)</p>
 
           <button
             onClick={handleDownload}
