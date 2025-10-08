@@ -73,7 +73,7 @@ export default function Randomizer() {
           <p className="text-lg text-gray-300">
             You’ve said <span className="text-blue-400 font-bold">{count}</span> gmsor(s) on X 🫡
           </p>
-          <p className="text-sm text-gray-500 mt-2">(Updated every 10 minutes)</p>
+          <p className="text-sm text-gray-500 mt-2 hidden">(Updated every 10 minutes)</p>
 
           <button
             onClick={handleDownload}
