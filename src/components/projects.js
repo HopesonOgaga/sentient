@@ -1,3 +1,4 @@
+import { desc } from "framer-motion/client";
 import { Link } from "react-router";
 
 export const Projects  = [
@@ -32,5 +33,14 @@ export const Projects  = [
           discord: "https://discord.gg/sentientfoundation",
           link: "/sentient",
         },
+        {
+          name:"Fogo",
+          logo:"/images/fogo.jpg",
+          desc:"",
+          twitter:"https://x.com/FogoChain",
+          discord:"",
+          link:""
+        }
        
+        
       ]
