@@ -39,7 +39,7 @@ export const Projects  = [
           desc:"",
           twitter:"https://x.com/FogoChain",
           discord:"",
-          link:""
+          link:"/fogo"
         }
        
         

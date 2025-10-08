@@ -7,6 +7,7 @@ import LeaderboardPage from "./pages/leaderboard";
 import TriviaCysic from "./components/cysic/gamecy";
 import Sentient from "./components/sentient";
 import Cysic from "./components/cysic";
+import Fogo from "./components/fogo";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cysicgame" element={<TriviaCysic></TriviaCysic>}></Route>
         <Route path="/sentient" element={<Sentient></Sentient>}></Route>
         <Route path="/cysic" element={<Cysic></Cysic>}></Route>
+        <Route path="/fogo" element={<Fogo></Fogo>}></Route>
       </Routes>
     </BrowserRouter>
   );
