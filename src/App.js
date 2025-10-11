@@ -10,6 +10,7 @@ import Cysic from "./components/cysic";
 import Fogo from "./components/fogo";
 import Ritual from "./components/ritual";
 import Allora from "./components/allora";
+import Rialo from "./components/rialo";
 function App() {
   return (
     <div className="App font-fira">
@@ -26,6 +27,7 @@ function App() {
           <Route path="/fogo" element={<Fogo></Fogo>}></Route>
           <Route path="/ritual" element={<Ritual></Ritual>}></Route>
           <Route path="/allora" element={<Allora></Allora>}></Route>
+          <Route path="/rialo" element={<Rialo></Rialo>}></Route>
         </Routes>
     </BrowserRouter>
     </div>

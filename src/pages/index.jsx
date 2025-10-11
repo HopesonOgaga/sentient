@@ -115,8 +115,21 @@ export default function Home() {
               <Link
                 key={index}
                 to={p.link || "#"}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all p-6 flex flex-col items-center text-center border border-gray-200"
+                className="relative bg-white rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all p-6 flex flex-col items-center text-center border border-gray-200"
               >
+                {/* 🔖 Status Badge */}
+                <div className="absolute top-4 right-4">
+                  <span
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      p.status === "Ongoing"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-red-100 text-red-700"
+                    }`}
+                  >
+                    {p.status}
+                  </span>
+                </div>
+
                 <img
                   src={p.logo}
                   alt={p.name}
@@ -132,7 +145,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 text-sm bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-                    onClick={(e) => e.stopPropagation()} // prevents triggering Link
+                    onClick={(e) => e.stopPropagation()}
                   >
                     X
                   </a>
@@ -141,7 +154,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 text-sm bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition"
-                    onClick={(e) => e.stopPropagation()} // prevents triggering Link
+                    onClick={(e) => e.stopPropagation()}
                   >
                     Discord
                   </a>
@@ -209,7 +222,9 @@ export default function Home() {
                 ))}
           </section> */}
 
-          <div><p>coming soon</p></div>
+          <div>
+            <p>coming soon</p>
+          </div>
         </div>
       </section>
       <section>prediction market</section>

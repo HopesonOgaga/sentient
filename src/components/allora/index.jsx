@@ -191,11 +191,13 @@ export default function Allora() {
           </div>
           {/* partner */}
           <section>
+            
             {/* Partners Section */}
             <div className="bg-gray-800/40 backdrop-blur-xl border border-gray-700 p-8 rounded-2xl shadow-lg">
               <h2 className="text-3xl font-semibold mb-6 text-indigo-400">
                 Partners & Alliances
               </h2>
+              <p className="font-semibold text-xl mb-6 capitalize text-yellow-400">secured $35 in funding</p>
               <p className="text-gray-300 leading-relaxed mb-6">
                 The Allora Network thrives through collaboration. Its ecosystem
                 is woven together with AI-native projects, DeFi protocols, and
