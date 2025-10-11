@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../navbar";
 import Footer from "../footer";
+import FogoGuide from "./guide";
 
 export default function Fogo() {
   return (
@@ -142,6 +143,7 @@ export default function Fogo() {
             </div>
           </div>
 
+         <section><FogoGuide></FogoGuide></section>
           {/* Discord Roles (same as before) */}
           <div className="bg-gray-800/40 backdrop-blur-xl border border-gray-700 p-8 rounded-2xl shadow-lg">
             <h2 className="text-3xl font-semibold mb-6 text-red-400 text-center">

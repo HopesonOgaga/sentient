@@ -212,6 +212,8 @@ export default function Home() {
           <div><p>coming soon</p></div>
         </div>
       </section>
+      <section>prediction market</section>
+      <section>Node </section>
 
       {/* Footer */}
       <Footer />

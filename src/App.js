@@ -8,22 +8,27 @@ import TriviaCysic from "./components/cysic/gamecy";
 import Sentient from "./components/sentient";
 import Cysic from "./components/cysic";
 import Fogo from "./components/fogo";
-
+import Ritual from "./components/ritual";
+import Allora from "./components/allora";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="nav" element={<Navbar></Navbar>}></Route>
-        <Route path="chat" element={<Chat></Chat>}></Route>
-        <Route path="/game" element={<Trivia></Trivia>}></Route>
-        <Route path="/leaderboard" element={<LeaderboardPage></LeaderboardPage>}></Route>
-        <Route path="/cysicgame" element={<TriviaCysic></TriviaCysic>}></Route>
-        <Route path="/sentient" element={<Sentient></Sentient>}></Route>
-        <Route path="/cysic" element={<Cysic></Cysic>}></Route>
-        <Route path="/fogo" element={<Fogo></Fogo>}></Route>
-      </Routes>
+    <div className="App font-fira">
+       <BrowserRouter >
+        <Routes >
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="nav" element={<Navbar></Navbar>}></Route>
+          <Route path="chat" element={<Chat></Chat>}></Route>
+          <Route path="/game" element={<Trivia></Trivia>}></Route>
+          <Route path="/leaderboard" element={<LeaderboardPage></LeaderboardPage>}></Route>
+          <Route path="/cysicgame" element={<TriviaCysic></TriviaCysic>}></Route>
+          <Route path="/sentient" element={<Sentient></Sentient>}></Route>
+          <Route path="/cysic" element={<Cysic></Cysic>}></Route>
+          <Route path="/fogo" element={<Fogo></Fogo>}></Route>
+          <Route path="/ritual" element={<Ritual></Ritual>}></Route>
+          <Route path="/allora" element={<Allora></Allora>}></Route>
+        </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 export default App;
