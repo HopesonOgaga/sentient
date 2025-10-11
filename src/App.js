@@ -11,6 +11,7 @@ import Fogo from "./components/fogo";
 import Ritual from "./components/ritual";
 import Allora from "./components/allora";
 import Rialo from "./components/rialo";
+import Brevis from "./components/brevis";
 function App() {
   return (
     <div className="App font-fira">
@@ -28,6 +29,7 @@ function App() {
           <Route path="/ritual" element={<Ritual></Ritual>}></Route>
           <Route path="/allora" element={<Allora></Allora>}></Route>
           <Route path="/rialo" element={<Rialo></Rialo>}></Route>
+          <Route path="/brevis" element={<Brevis></Brevis>}></Route>
         </Routes>
     </BrowserRouter>
     </div>

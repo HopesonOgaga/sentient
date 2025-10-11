@@ -7,6 +7,7 @@ import { Projects } from "../components/projects";
 import CountdownTimer from "../components/timer/cysictime";
 import { Link } from "react-router";
 
+
 export default function Home() {
   const [submissions, setSubmissions] = useState([]);
 
@@ -97,6 +98,7 @@ export default function Home() {
             <p>just an intern dev having fun build for community </p>
             <div>
               <CountdownTimer></CountdownTimer>
+              
             </div>
           </div>
         </div>
@@ -119,6 +121,8 @@ export default function Home() {
               >
                 {/* 🔖 Status Badge */}
                 <div className="absolute top-4 right-4">
+                 
+
                   <span
                     className={`px-3 py-1 text-xs font-semibold rounded-full ${
                       p.status === "Ongoing"
@@ -139,6 +143,7 @@ export default function Home() {
                   {p.name}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4">{p.desc}</p>
+                 {/* <p className="text-sm text-gray-400">{p.type}</p> */}
                 <div className="flex gap-3">
                   <a
                     href={p.twitter}
