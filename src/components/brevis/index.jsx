@@ -94,7 +94,7 @@ export default function Brevis() {
                 muted
                 playsInline
               >
-                <source src="/videos/brevis.mp4" type="video/mp4" />
+                <source src="" type="video/mp4" />
               </video>
             </div>
           </div>
