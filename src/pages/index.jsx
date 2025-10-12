@@ -7,6 +7,7 @@ import { Projects } from "../components/projects";
 import CountdownTimer from "../components/timer/cysictime";
 import { Link } from "react-router";
 import CryptoNews from "../api/news";
+import TwitterFeed from "../api/news";
 
 
 export default function Home() {
@@ -173,14 +174,14 @@ export default function Home() {
        {/* news  */}
        
       {/* Community Section */}
-      <section className="w-full py-20 bg-gray-50">
+      <section className="w-full  bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-gray-900">
             Community Interaction
           </h2>
 
           <section className="mb-12">
-            <CryptoNews />
+            <TwitterFeed></TwitterFeed>
           </section>
 
           {/* Card Row */}
