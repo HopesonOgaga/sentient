@@ -6,6 +6,7 @@ import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { Projects } from "../components/projects";
 import CountdownTimer from "../components/timer/cysictime";
 import { Link } from "react-router";
+import CryptoNews from "../api/news";
 
 
 export default function Home() {
@@ -169,13 +170,18 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+       {/* news  */}
+       
       {/* Community Section */}
       <section className="w-full py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-gray-900">
             Community Interaction
           </h2>
+
+          <section className="mb-12">
+            <CryptoNews />
+          </section>
 
           {/* Card Row */}
           {/* <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
