@@ -319,6 +319,102 @@ export default function Brevis() {
               </a>
             </div>
           </div>
+          <section>
+            {/* Late Night Alpha - Brevis Proving Grounds */}
+            <div className="bg-gray-800/40 backdrop-blur-xl border border-gray-700 p-8 rounded-2xl shadow-lg">
+              <h2 className="text-3xl font-semibold mb-4 text-pink-400">
+                Late Night Alpha — Brevis Proving Grounds
+              </h2>
+              <p className="text-gray-300 leading-relaxed mb-6">
+                Brevis has launched the{" "}
+                <span className="text-fuchsia-400 font-semibold">
+                  Proving Grounds
+                </span>{" "}
+                — a brand-new arena to showcase projects and apps powered by
+                Brevis ZK technology. If you’ve ever wanted to experience
+                intelligent smart contracts in action, this is your moment.
+              </p>
+
+              <div className="bg-black/40 border border-gray-700 rounded-xl p-6 mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-2">
+                  Campaign Details
+                </h3>
+                <ul className="list-disc pl-6 text-gray-300 space-y-2">
+                  <li>
+                    <span className="font-semibold text-white">Cost:</span> $0
+                  </li>
+                  <li>X account must be at least 30 days old</li>
+                  <li>1 account = 1 wallet (no multi-accounting)</li>
+                  <li>
+                    Funding:{" "}
+                    <span className="text-green-400 font-semibold">$7.5M</span>{" "}
+                    backing the initiative
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-purple-400 mb-2">
+                  How to Get Started
+                </h3>
+                <ol className="list-decimal pl-6 text-gray-300 space-y-2">
+                  <li>
+                    Go to{" "}
+                    <a
+                      href="https://proving-grounds.brevis.network/ppjCBA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-fuchsia-400 hover:underline"
+                    >
+                      proving-grounds.brevis.network
+                    </a>
+                  </li>
+                  <li>Connect your wallet</li>
+                  <li>
+                    Follow <span className="text-fuchsia-400">@brevis_zk</span>{" "}
+                    on X and join the Discord
+                  </li>
+                  <li>Complete all tasks and start earning Sparks</li>
+                </ol>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold text-fuchsia-400 mb-2">
+                  How It Works
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  The campaign runs in two phases — both rewarding you with
+                  Sparks for active participation.
+                </p>
+                <ul className="list-disc pl-6 text-gray-300 space-y-2">
+                  <li>
+                    <span className="text-white font-semibold">
+                      Phase 1 (Oct 13 – Nov 2):
+                    </span>{" "}
+                    Complete simple social tasks:
+                    <ul className="pl-6 list-disc space-y-1">
+                      <li>Daily check-ins → 10 Sparks/day</li>
+                      <li>Streak bonuses → up to 200 extra</li>
+                      <li>
+                        Likes & reposts → 100 Sparks + milestones up to 500
+                      </li>
+                      <li>Referrals → 200 Sparks per eligible friend</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span className="text-white font-semibold">
+                      Phase 2 (Starts Nov 3):
+                    </span>{" "}
+                    Go on-chain interacting with dApps powered by Brevis across
+                    multiple ecosystems. Full task list drops at launch.
+                  </li>
+                </ul>
+                <p className="text-gray-400 text-sm mt-4 italic">
+                  🔁 Points update within 5 minutes – 24 hours.
+                </p>
+              </div>
+            </div>
+          </section>
 
           {/* Footer Links */}
           <div className="flex flex-wrap justify-center gap-5">

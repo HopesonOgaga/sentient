@@ -14,7 +14,7 @@ import Rialo from "./components/rialo";
 import Brevis from "./components/brevis";
 function App() {
   return (
-    <div className="App font-fira">
+    <div className="App font-fira ">
        <BrowserRouter >
         <Routes >
           <Route path="/" element={<Home></Home>}></Route>
