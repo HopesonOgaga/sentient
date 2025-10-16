@@ -6,8 +6,7 @@ import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { Projects } from "../components/projects";
 import CountdownTimer from "../components/timer/cysictime";
 import { Link } from "react-router";
-import CryptoNews from "../api/news";
-import TwitterFeed from "../api/news";
+
 
 
 export default function Home() {
@@ -180,9 +179,6 @@ export default function Home() {
             Community Interaction
           </h2>
 
-          <section className="mb-12">
-            <TwitterFeed></TwitterFeed>
-          </section>
 
           {/* Card Row */}
           {/* <section className="flex gap-6 mt-8 flex-col sm:flex-row ">
