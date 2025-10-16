@@ -104,7 +104,7 @@ export default function FogoTrivia() {
     } else {
       navigate("/card", { state: { score: newScore } }); // ✅ Use updated score
     }
-  }, 2000);
+  }, 800);
 };
 
 

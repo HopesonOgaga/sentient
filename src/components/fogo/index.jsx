@@ -26,6 +26,24 @@ export default function Fogo() {
             </p>
           </div>
 
+          <div className="text-center py-16">
+            <h2 className="text-3xl font-semibold text-orange-400 mb-6">
+              Ready to test your Fogo knowledge?
+            </h2>
+            <p className="text-gray-400 mb-8">
+              Step into the flame and prove your mastery in the ultimate Fogo
+              Trivia Challenge.
+            </p>
+            <a
+              href="/fogogame" // 🔥 change this to your trivia route
+              className="inline-block px-10 py-4 bg-gradient-to-r from-orange-500 via-red-600 to-yellow-500 
+               text-white text-lg font-semibold rounded-full shadow-lg hover:scale-105 
+               transition transform hover:shadow-xl"
+            >
+              Play Trivia Game
+            </a>
+          </div>
+
           {/* Mission */}
           <div className="bg-gray-800/40 backdrop-blur-xl border border-gray-700 p-8 rounded-2xl shadow-lg">
             <h2 className="text-3xl font-semibold mb-4 text-orange-400">
@@ -278,24 +296,6 @@ export default function Fogo() {
             <p className="text-gray-500 text-sm mt-2">
               Stay tuned for official updates and pre-mainnet missions.
             </p>
-          </div>
-          {/* Game Entry Section */}
-          <div className="text-center py-16">
-            <h2 className="text-3xl font-semibold text-orange-400 mb-6">
-              Ready to test your Fogo knowledge?
-            </h2>
-            <p className="text-gray-400 mb-8">
-              Step into the flame and prove your mastery in the ultimate Fogo
-              Trivia Challenge.
-            </p>
-            <a
-              href="/fogogame" // 🔥 change this to your trivia route
-              className="inline-block px-10 py-4 bg-gradient-to-r from-orange-500 via-red-600 to-yellow-500 
-               text-white text-lg font-semibold rounded-full shadow-lg hover:scale-105 
-               transition transform hover:shadow-xl"
-            >
-              Play Trivia Game
-            </a>
           </div>
 
           {/* Footer Links */}
