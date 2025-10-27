@@ -63,6 +63,26 @@ export default function Cysic() {
               **Cysic turns cryptographic theory into real-world speed**.
             </p>
           </div>
+          <section>
+              
+          {/* Game Link Section */}
+          <div className="bg-gray-800/40 backdrop-blur-xl border border-gray-700 p-8 rounded-2xl text-center shadow-lg">
+            <h2 className="text-3xl font-semibold mb-4 text-pink-400">
+              🎮 Community Game Zone
+            </h2>
+            <p className="text-gray-300 mb-6">
+              Test how well you know Cysic & the ZK ecosystem. Earn XP that
+              might later sync to your community rank!
+            </p>
+            <a
+              href="/game"
+              className="px-6 py-3 rounded-lg bg-pink-600 hover:bg-pink-700 transition text-white font-semibold"
+            >
+              Play Trivia Game
+            </a>
+          </div>
+          <Randomizer min={200} max={1000} maxRepeat={8} />
+          </section>
 
           {/* Technology Section */}
           <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -308,23 +328,6 @@ export default function Cysic() {
             </div>
           </div> */}
 
-          {/* Game Link Section */}
-          <div className="bg-gray-800/40 backdrop-blur-xl border border-gray-700 p-8 rounded-2xl text-center shadow-lg">
-            <h2 className="text-3xl font-semibold mb-4 text-pink-400">
-              🎮 Community Game Zone
-            </h2>
-            <p className="text-gray-300 mb-6">
-              Test how well you know Cysic & the ZK ecosystem. Earn XP that
-              might later sync to your community rank!
-            </p>
-            <a
-              href="/game"
-              className="px-6 py-3 rounded-lg bg-pink-600 hover:bg-pink-700 transition text-white font-semibold"
-            >
-              Play Trivia Game
-            </a>
-          </div>
-          <Randomizer min={200} max={1000} maxRepeat={8} />
 
 
           {/* Countdown */}
