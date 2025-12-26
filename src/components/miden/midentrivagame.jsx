@@ -12,24 +12,159 @@ import { db } from "../../db/firebase";
 
 const LB_COLLECTION = "community_miden_trivia_leaderboard";
 const CHAT_COLLECTION = "community_miden_trivia_chat";
-
 const QUESTIONS = [
   {
-    question: "What is Miden primarily designed for?",
-    options: ["NFT marketplaces", "Zero-knowledge smart contracts", "Social media apps", "GameFi only"],
+    question: "What core technology allows Miden to verify computations without revealing underlying data?",
+    options: ["Proof of Work", "Zero‑knowledge proofs", "Proof of Stake", "Federated learning"],
     answer: 1,
   },
   {
-    question: "Which virtual machine does Miden use?",
-    options: ["EVM", "WASM", "Move VM", "Miden VM"],
-    answer: 3,
+    question: "Miden moves transaction execution from network nodes to what location?",
+    options: ["Mainframe computers", "User devices", "Central servers", "Blockchain validators"],
+    answer: 1,
   },
   {
-    question: "What is a core goal of Miden?",
-    options: ["High gas fees", "Centralized execution", "Private & scalable computation", "Off-chain only apps"],
+    question: "Which rollup model does Miden implement?",
+    options: ["Optimistic rollup", "Plasma rollup", "Zero‑knowledge rollup (ZK rollup)", "Sharding"],
     answer: 2,
   },
+  {
+    question: "In Miden, what is submitted to the chain instead of raw transaction data?",
+    options: ["Signed transactions", "Proofs of execution", "Account balances", "Encrypted payloads"],
+    answer: 1,
+  },
+  {
+    question: "What concept describes the decentralization of computation across users in Miden?",
+    options: ["Edge execution", "Validator pooling", "Sharding", "Off‑chain batching"],
+    answer: 0,
+  },
+  {
+    question: "Which base layer’s security does Miden leverage as a rollup?",
+    options: ["Bitcoin", "Solana", "Ethereum", "Cosmos"],
+    answer: 2,
+  },
+  {
+    question: "Which programming language ecosystem does Miden support for smart contracts?",
+    options: ["Solidity only", "Rust and WASM", "Python", "JavaScript"],
+    answer: 1,
+  },
+  {
+    question: "Miden’s VM automatically generates proofs using what type of cryptographic system?",
+    options: ["SNARKs", "STARKs", "Hashing", "ECDSA"],
+    answer: 1,
+  },
+  {
+    question: "What paradigm does Miden use to represent accounts as independent state machines?",
+    options: ["Actor model", "Client‑server model", "Monolithic VM", "Central ledger"],
+    answer: 0,
+  },
+  {
+    question: "Miden’s architecture helps reduce which major burden on blockchain nodes?",
+    options: ["Consensus time", "State bloat", "Mining fees", "Network latency"],
+    answer: 1,
+  },
+  {
+    question: "What is a unique object in Miden that holds assets and programmable logic?",
+    options: ["UTXO", "Note", "Token", "Account blob"],
+    answer: 1,
+  },
+  {
+    question: "How does Miden maintain privacy without exposing transaction details on‑chain?",
+    options: ["Encryption only", "Proof broadcast", "Zero‑knowledge proofs", "Multi‑sig verification"],
+    answer: 2,
+  },
+  {
+    question: "What benefit does edge execution bring to users with regards to fees?",
+    options: ["Higher fees", "Lower fees", "Variable fees", "Static fees"],
+    answer: 1,
+  },
+  {
+    question: "Which component verifies the proofs submitted by users in Miden?",
+    options: ["Proving servers", "Validators", "Sequencers", "Miners"],
+    answer: 1,
+  },
+  {
+    question: "What advantage does Miden’s proof verification model offer over traditional execution?",
+    options: ["Faster block times", "No need for global re‑execution", "Multiple signatures", "Sharding"],
+    answer: 1,
+  },
+  {
+    question: "What type of accounts does Miden support that exist only off‑chain?",
+    options: ["Public accounts", "Private accounts", "Hybrid accounts", "Nested accounts"],
+    answer: 1,
+  },
+  {
+    question: "Why is edge execution considered beneficial for scalability?",
+    options: ["Centralizes execution", "Parallelizes computation", "Deletes transaction data", "Requires fewer nodes"],
+    answer: 1,
+  },
+  {
+    question: "What does Miden use to enable both public and private interactions?",
+    options: ["Permissioned bridges", "Hybrid model", "Delegate proof lists", "Oracle feeds"],
+    answer: 1,
+  },
+  {
+    question: "In Miden’s architecture, which entity is responsible for proof generation?",
+    options: ["Validators only", "Users’ devices", "Sequencers", "Central provers"],
+    answer: 1,
+  },
+  {
+    question: "What role do validators play in Miden?",
+    options: ["Execute all transactions", "Verify proofs", "Store private data", "Generate user keys"],
+    answer: 1,
+  },
+  {
+    question: "Which type of smart contract compilation does Miden support?",
+    options: ["Direct bytecode", "Rust → WASM", "Python bytecode", "Native SQL"],
+    answer: 1,
+  },
+  {
+    question: "Edge execution moves computation from the network to where?",
+    options: ["Cloud servers", "User devices", "Central repository", "Third‑party API"],
+    answer: 1,
+  },
+  {
+    question: "Miden’s notes are similar to which classic blockchain concept?",
+    options: ["Account balances", "UTXO", "Delegated proof", "State trees"],
+    answer: 1,
+  },
+  {
+    question: "Which aspect of privacy does Miden’s design address?",
+    options: ["Anonymity only", "Verifiable correctness without revealing data", "Encryption only", "Central key storage"],
+    answer: 1,
+  },
+  {
+    question: "What happens after a user generates a zero‑knowledge proof locally?",
+    options: ["It is broadcast to peers", "Sent to validators for verification", "Stored locally only", "Discarded"],
+    answer: 1,
+  },
+  {
+    question: "Which advantage does local computation provide in Miden?",
+    options: ["More gas fees", "Fewer proofs", "Reduced redundancy", "Slower confirmations"],
+    answer: 2,
+  },
+  {
+    question: "The Miden VM is designed to support which compilation target?",
+    options: ["EVM", "WASM", "Native C", "Java bytecode"],
+    answer: 1,
+  },
+  {
+    question: "How does Miden’s execution model impact storage requirements?",
+    options: ["Increases total state", "No change", "Minimizes chain state", "Randomizes blocks"],
+    answer: 2,
+  },
+  {
+    question: "Which key benefit emerges from edge execution plus ZK proofs?",
+    options: ["Central sequencing", "Privacy and scalability", "Multi‑chain bridges", "Heavy re‑execution"],
+    answer: 1,
+  },
+  {
+    question: "The actor model in Miden allows accounts to do what?",
+    options: ["Increase fees", "Maintain own state independently", "Merge accounts", "Disable proofs"],
+    answer: 1,
+  },
 ];
+
 
 export default function MidenTriviaGame() {
   const [username, setUsername] = useState("");
