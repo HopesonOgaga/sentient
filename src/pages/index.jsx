@@ -235,6 +235,7 @@ export default function Home() {
         </div>
       </section>
       <section>prediction market</section>
+      
       <section>Node </section>
 
       {/* Footer */}

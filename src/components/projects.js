@@ -19,7 +19,7 @@ export const Projects = [
     twitter: "https://x.com/alloranetwork",
     discord: "https://discord.gg/allora",
     link: "/allora",
-    status: "Ongoing",
+    status: "Completed",
     type: "Prediction / AI", // added
   },
   {
@@ -48,7 +48,7 @@ export const Projects = [
     twitter: "https://x.com/FogoChain",
     discord: "https://discord.gg/fogochain",
     link: "/fogo",
-    status: "Ongoing",
+    status: "Completed",
     type: "Layer 1 / DeFi", // added
   },
   {

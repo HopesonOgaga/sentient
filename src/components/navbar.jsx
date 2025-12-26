@@ -22,7 +22,7 @@ function Navbar() {
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex gap-8 capitalize font-medium text-lg text-[#A9E8FF]">
-          <Link to={"/game"}>
+          <Link to={"/"}>
             <li className="hover:text-[#00CFFF] cursor-pointer transition-colors duration-200">
               Games
             </li>
@@ -32,7 +32,7 @@ function Navbar() {
               Chat
             </li>
           </Link>
-          <Link to={"/leaderboard"}>
+          <Link to={"/"}>
             <li className="hover:text-[#00CFFF] cursor-pointer transition-colors duration-200">
               Leaderboard
             </li>
@@ -75,7 +75,7 @@ function Navbar() {
                   Menu
                 </p>
                 <ul className="flex flex-col gap-6 capitalize font-medium text-[#A9E8FF]">
-                  <Link to={"/game"} onClick={() => setIsOpen(false)}>
+                  <Link to={"/"} onClick={() => setIsOpen(false)}>
                     <li className="hover:text-[#00CFFF] cursor-pointer">
                       Games
                     </li>
@@ -85,7 +85,7 @@ function Navbar() {
                       Chat
                     </li>
                   </Link>
-                  <Link to={"/leaderboard"} onClick={() => setIsOpen(false)}>
+                  <Link to={"/"} onClick={() => setIsOpen(false)}>
                     <li className="hover:text-[#00CFFF] cursor-pointer">
                       Leaderboard
                     </li>

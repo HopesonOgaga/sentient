@@ -18,7 +18,7 @@ import MidenLanding from "./components/miden/index.jsx";
 import MidenTriviaGame from "./components/miden/midentrivagame.jsx";
 function App() {
   return (
-    <div className="App font-fira ">
+    <div className="App  ">
        <BrowserRouter >
         <Routes >
           <Route path="/" element={<Home></Home>}></Route>

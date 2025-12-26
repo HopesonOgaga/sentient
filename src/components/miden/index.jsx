@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
+import Navbar from "../navbar";
+import Footer from "../footer";
 
 export default function MidenLanding() {
   return (
     <main className="w-full min-h-screen bg-white text-gray-900">
       {/* HEADER / HERO */}
       <header className="relative overflow-hidden">
+        <section>
+           <Navbar></Navbar>
+        </section>
         {/* Floating shapes */}
         <div className="absolute inset-0 pointer-events-none">
           <span className="floating-shape left-10 top-20" />
@@ -126,12 +131,13 @@ export default function MidenLanding() {
       </section>
       {/* explore miden */}
       <section>
-        <div>
-          <p>miden community content</p>
+        <div className="">
+          <p className="">miden community content</p>
+          <div className="">
+            {/* community videos and guides will be dropped here  */}
+          </div>
         </div>
-        <div>
-
-        </div>
+        <div></div>
       </section>
 
       {/* COMMUNITY */}
@@ -158,7 +164,9 @@ export default function MidenLanding() {
             </a>
           </div>
         </div>
+      
       </section>
+      <Footer></Footer>
     </main>
   );
 }
