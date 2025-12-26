@@ -32,7 +32,7 @@ export default function MidenLanding() {
             complexity.
           </p>
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex md:flex-row flex-col  gap-4">
             <Link
               target="_blank"
               to="https://docs.miden.xyz/intro"
