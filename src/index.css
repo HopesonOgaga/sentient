@@ -8,3 +8,32 @@
 body {
   @apply bg-neutral-800 text-white font-fira;
 }
+
+.floating-shape {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 165, 0, 0.15);
+  border-radius: 12px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-shape.delay-200 {
+  animation-delay: 2s;
+}
+
+.floating-shape.delay-500 {
+  animation-delay: 5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

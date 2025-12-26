@@ -82,13 +82,12 @@ export const Projects = [
     type: "Community / GameFi", // added
   },
    {
-    name: "Brevis",
-    logo: "/images/brevis/brevis.png",
+    name: "miden",
+    logo: "/images/miden/midenwallp.png",
     desc: "A gamified claim portal and project hub for crypto explorers.",
-    discord: "https://discord.gg/5P5CKHFz",
-    twitter: "https://x.com/brevis_zk",
-    link: "/brevis",
+    twitter: "https://x.com/0xMiden",
+    link: "/miden",
     status: "Ongoing",
-    type: "Community / GameFi", // added
+    type: "Community , ZK , privacy , open source",
   },
 ];

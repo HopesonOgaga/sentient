@@ -4,7 +4,6 @@ import Footer from "../components/footer";
 import { db } from "../db/firebase";
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { Projects } from "../components/projects";
-import CountdownTimer from "../components/timer/cysictime";
 import { Link } from "react-router";
 
 
@@ -98,7 +97,7 @@ export default function Home() {
             </p>
             <p>just an intern dev having fun build for community </p>
             <div>
-              <CountdownTimer></CountdownTimer>
+             
               
             </div>
           </div>
